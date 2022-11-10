@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="¡Seleccione un juego!"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+
+        />
+    
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Juego 1"
+        android:layout_marginTop="20dp"
+        android:id="@+id/btnJ1"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Juego 2"
+        android:layout_marginTop="20dp"
+        android:id="@+id/btnJ2"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Juego 3"
+        android:layout_marginTop="20dp"
+        android:id="@+id/btnJ3"
+
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Juego 4"
+        android:layout_marginTop="20dp"
+        android:id="@+id/btnJ4"
+
+        />
+</LinearLayout>
