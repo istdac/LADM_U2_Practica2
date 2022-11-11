@@ -15,15 +15,15 @@ class MainActivity : AppCompatActivity() {
             var j1 = Intent(this,Juego1::class.java)
             startActivity(j1)
         }
-        binding.btnJ1.setOnClickListener {
+        binding.btnJ2.setOnClickListener {
             var j2 = Intent(this,Juego2::class.java)
             startActivity(j2)
         }
-        binding.btnJ1.setOnClickListener {
+        binding.btnJ3.setOnClickListener {
             var j3 = Intent(this,Juego3::class.java)
             startActivity(j3)
         }
-        binding.btnJ1.setOnClickListener {
+        binding.btnJ4.setOnClickListener {
             var j4 = Intent(this,Juego4::class.java)
             startActivity(j4)
         }
