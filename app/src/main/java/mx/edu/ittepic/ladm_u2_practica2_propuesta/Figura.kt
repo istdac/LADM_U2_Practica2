@@ -11,6 +11,7 @@ class Figura(l:View,i:Int,x:Float,y:Float,n:String) {
     var r = RectF(x,y,(x+img.width),(y+img.height))
     var invisible=false
     var correcto=false
+    var nom=n
 
     fun pintar(c:Canvas){
         if (invisible){
@@ -43,7 +44,7 @@ class Figura(l:View,i:Int,x:Float,y:Float,n:String) {
 
     fun col(f2:Figura):Boolean{
         var r2=f2.r
-        if(r.intersect(r2) && correcto && f2.correcto){
+        if(r.intersect(r2)){
             return true
             //Revisar si naipes iguales
         }

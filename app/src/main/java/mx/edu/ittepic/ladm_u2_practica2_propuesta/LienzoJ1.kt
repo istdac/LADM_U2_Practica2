@@ -6,13 +6,12 @@ import android.view.View
 import kotlin.random.Random
 
 class LienzoJ1(j:Juego1):View(j) {
-    var Prin = Figura(this,R.drawable.n1,100f,100f,"Principal")
-    var suit2 = Figura(this,R.drawable.n2,500f,500f,"Incorrecto")
     var pos=1
     var punteroFigura:Figura?=null
     var naipes = ArrayList<Int>()
     var ronda=1
     var naiArr = ArrayList<Figura>()
+
     init{
         //Obtener imagenes
         obtenerNaipes()
@@ -30,11 +29,11 @@ class LienzoJ1(j:Juego1):View(j) {
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-
+        var Prin = naiArr.find { n->n.correcto }
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
 
-                if(Prin.detArea(event.x,event.y)){
+                if(Prin!!.detArea(event.x,event.y)){
                     punteroFigura=Prin
                 }
 
@@ -46,12 +45,14 @@ class LienzoJ1(j:Juego1):View(j) {
             }
             MotionEvent.ACTION_UP -> {
                 if(punteroFigura==Prin){
-                    if(Prin.col(suit2)) suit2.invisible=true
+                    var coli= naiArr.filter { f->Prin!!.col(f) }
+                    for(f in coli){
+                        if(f.nom=="Par"){
+                            println("Correct")
+                        }
+                    }
                 }
                 punteroFigura=null
-                suit2.invisible=false
-                suit2.x=500f
-                suit2.y=500f
             }
         }
 
@@ -70,14 +71,13 @@ class LienzoJ1(j:Juego1):View(j) {
         naipes.add(R.drawable.n7)
         naipes.add(R.drawable.n8)
         naipes.add(R.drawable.n9)
-        naipes.add(R.drawable.n10)
     }//obtenerNaipes
 
 
     fun barajear(){
         //Crear naipes
-        var posX= arrayOf(100f,400f,700f)
-        var posY= arrayOf(500f,900f,1300f)
+        var posX= arrayOf(25f,450f,875f)
+        var posY= arrayOf(500f,1000f,1500f)
         var ix=0
         var iy=0
         var c=1
@@ -92,14 +92,17 @@ class LienzoJ1(j:Juego1):View(j) {
             if(ix==2){ix=0}else{ix++}
             naiArr.add(Figura(this,n,posX[ix],posY[iy],"naipes"))
             c++
+            println(""+posX[ix]+""+posY[iy])
         }
         println(naiArr)
+
+        val corN = Random(System.currentTimeMillis())
+        var nCopiar=corN.nextInt(0,9)
+        naiArr.add(Figura(this,naipes[nCopiar],400f,100f,"Principal"))
+        naiArr[nCopiar].nom="Par"
         naiArr[naiArr.size-1].correcto=true
-        naiArr[naiArr.size-1].x=400f
-        naiArr[naiArr.size-1].y=100f
-        println(naiArr)
-        naiArr.shuffle()
-        println(naiArr)
+        naiArr.shuffle(corN)
+
     }
 
 }
