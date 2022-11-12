@@ -6,6 +6,6 @@ import android.os.Bundle
 class Juego4 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_juego4)
+        setContentView(LienzoJ4(this))
     }
 }
