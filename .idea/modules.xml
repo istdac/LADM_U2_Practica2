@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/LADM_U2_Practica2_Propuesta.iml" filepath="$PROJECT_DIR$/.idea/modules/LADM_U2_Practica2_Propuesta.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LADM_U2_Practica2_Propuesta.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LADM_U2_Practica2_Propuesta.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LADM_U2_Practica2_Propuesta.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LADM_U2_Practica2_Propuesta.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LADM_U2_Practica2_Propuesta.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LADM_U2_Practica2_Propuesta.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LADM_U2_Practica2_Propuesta.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LADM_U2_Practica2_Propuesta.app.unitTest.iml" />
+    </modules>
+  </component>
+</project>
