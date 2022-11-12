@@ -1,5 +1,6 @@
 package mx.edu.ittepic.ladm_u2_practica2_propuesta
 
+import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.view.MotionEvent
 import android.view.View
@@ -9,9 +10,9 @@ class LienzoJ1(j:Juego1):View(j) {
     var pos=1
     var punteroFigura:Figura?=null
     var naipes = ArrayList<Int>()
-    var ronda=1
     var naiArr = ArrayList<Figura>()
-
+    var tot= ArrayList<Int>()
+    var totindex=8
     init{
         //Obtener imagenes
         obtenerNaipes()
@@ -22,20 +23,23 @@ class LienzoJ1(j:Juego1):View(j) {
     override fun onDraw(c: Canvas) {
         super.onDraw(c)
 
-        for(n in naiArr){
-            n.pintar(c)
+        if(naiArr.isNotEmpty()) {
+            for (n in naiArr) {
+                n.pintar(c)
+            }
         }
-
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         var Prin = naiArr.find { n->n.correcto }
+        println(Prin)
+        if(Prin===null){return false}
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
 
                 if(Prin!!.detArea(event.x,event.y)){
                     punteroFigura=Prin
-                }
+                }else{}
 
             }
             MotionEvent.ACTION_MOVE -> {
@@ -48,11 +52,15 @@ class LienzoJ1(j:Juego1):View(j) {
                     var coli= naiArr.filter { f->Prin!!.col(f) }
                     for(f in coli){
                         if(f.nom=="Par"){
-                            println("Correct")
+                            naiArr.remove(Prin)
+                            naiArr.remove(f)
+                            totindex--
+                            punteroFigura=null
+                            sigNaipe()
                         }
                     }
                 }
-                punteroFigura=null
+
             }
         }
 
@@ -94,15 +102,18 @@ class LienzoJ1(j:Juego1):View(j) {
             c++
             println(""+posX[ix]+""+posY[iy])
         }
-        println(naiArr)
 
-        val corN = Random(System.currentTimeMillis())
-        var nCopiar=corN.nextInt(0,9)
-        naiArr.add(Figura(this,naipes[nCopiar],400f,100f,"Principal"))
-        naiArr[nCopiar].nom="Par"
+        naiArr.add(Figura(this,naipes[totindex],400f,100f,"Principal"))
+        naiArr[totindex].nom="Par"
         naiArr[naiArr.size-1].correcto=true
-        naiArr.shuffle(corN)
+    }//barajear
+
+    fun sigNaipe(){
+        if (naiArr.isNotEmpty()){
+            naiArr.add(Figura(this,naipes[totindex],400f,100f,"Principal"))
+            naiArr[totindex].nom="Par"
+            naiArr[naiArr.size-1].correcto=true
+        }
 
     }
-
 }
