@@ -38,6 +38,8 @@ class LienzoJ4(p: Juego4) : View(p) {
     val letraI = Figurasj4(this, R.drawable.j4i, posLetras + 400, 800f)
     val letraO = Figurasj4(this, R.drawable.j4o, posLetras + 600, 800f)
     val letraU = Figurasj4(this, R.drawable.j4u, posLetras + 800, 800f)
+    //fondo
+    val fondo=Figuras_estaticasJ4(this,R.drawable.fondoj4,0f,0f)
 
     //correcto
     val bien = Figuras_estaticasJ4(this, R.drawable.j4bien, 500f, 500f)
@@ -62,7 +64,7 @@ class LienzoJ4(p: Juego4) : View(p) {
     //felicidaddes
     val felicidades=Figuras_estaticasJ4(this,R.drawable.buentrabajo,100f,400f)
 
-
+//
 
     //puntero
     var punteroFigura: Figurasj4? = null
@@ -72,7 +74,7 @@ class LienzoJ4(p: Juego4) : View(p) {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-
+        fondo.pintar(canvas)
         if (pantalla == 1 ) {//gato
 
             invalidate()
