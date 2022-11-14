@@ -48,9 +48,11 @@ class Figurasj4(lienzo: LienzoJ4, image: Int, x: Float, y: Float) {
         if (figuraB.determinarArea(x2,y))return true
         if (figuraB.determinarArea(x,y2))return true
         if (figuraB.determinarArea(x,y))return true
-
-
         return false
+    }
+    fun reposicionar(xInicial: Float , yInicial:Float){
+        x=xInicial
+        y=yInicial
     }
 
 }
