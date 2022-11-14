@@ -6,6 +6,6 @@ import android.os.Bundle
 class Juego3 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_juego3)
+        setContentView(LienzoJ3(this))
     }
 }
