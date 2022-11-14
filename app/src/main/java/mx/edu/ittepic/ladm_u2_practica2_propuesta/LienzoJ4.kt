@@ -124,23 +124,31 @@ class LienzoJ4(p: Juego4) : View(p) {
             MotionEvent.ACTION_DOWN -> {
                 if (letraA.determinarArea(event.x, event.y)) {
                     punteroFigura = letraA
-                    vozA.start()
+                    try{ vozA.start() }catch(e:Exception){}
                 }
                 if (letraE.determinarArea(event.x, event.y)) {
                     punteroFigura = letraE
-                    vozE.start()
+
+                    try{ vozE.start() }catch(e:Exception){}
+
                 }
                 if (letraI.determinarArea(event.x, event.y)) {
                     punteroFigura = letraI
-                    vozI.start()
+
+                    try{ vozI.start() }catch(e:Exception){}
+
                 }
                 if (letraO.determinarArea(event.x, event.y)) {
                     punteroFigura = letraO
-                    vozO.start()
+
+                    try{  vozO.start() }catch(e:Exception){}
+
                 }
                 if (letraU.determinarArea(event.x, event.y)) {
                     punteroFigura = letraU
-                    vozU.start()
+
+                    try{  vozU.start() }catch(e:Exception){}
+
                 }
             }
             MotionEvent.ACTION_MOVE -> {
@@ -153,7 +161,9 @@ class LienzoJ4(p: Juego4) : View(p) {
                                 reposicionarVocales()
                                 pantalla = 2
                                 invalidate()
-                                vozCasa.start()
+
+                                try{ vozCasa.start() }catch(e:Exception){}
+
                             }
                         }
                         if (punteroFigura == letraA) {
@@ -199,7 +209,9 @@ class LienzoJ4(p: Juego4) : View(p) {
                                     punteroFigura=null
                                     reposicionarVocales()
                                     pantalla = 3
-                                    vozLeon.start()
+
+                                    try{ vozLeon.start() }catch(e:Exception){}
+
                                     invalidate()
                                 }
                             }
@@ -232,7 +244,8 @@ class LienzoJ4(p: Juego4) : View(p) {
                                         reposicionarVocales()
                                         pantalla = 4
                                         invalidate()
-                                        vozFelicidades.start()
+                                        try{ vozFelicidades.start() }catch(e:Exception){}
+
                                     }
                                 }
                                 if (punteroFigura == letraA) {
