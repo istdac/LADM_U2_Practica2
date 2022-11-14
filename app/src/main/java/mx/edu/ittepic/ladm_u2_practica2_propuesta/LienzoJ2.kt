@@ -1,9 +1,12 @@
 package mx.edu.ittepic.ladm_u2_practica2_propuesta
 
+import android.annotation.SuppressLint
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.media.MediaPlayer
 import android.view.MotionEvent
 import android.view.View
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintSet
 
 class LienzoJ2(j:Juego2):View(j) {
@@ -24,6 +27,14 @@ class LienzoJ2(j:Juego2):View(j) {
         R.drawable.quetz,
         R.drawable.ran,
         R.drawable.tor,
+    )
+    var audios = arrayOf(
+        R.raw.leon,
+        R.raw.lobo,
+        R.raw.pez,
+        R.raw.quetzal,
+        R.raw.rana,
+        R.raw.toro,
     )
     var nams = arrayOf("Leon","Lobo","Pez","Quetzal","Rana","Toro")
     var punteroFigura : Figura?=null
@@ -46,6 +57,7 @@ class LienzoJ2(j:Juego2):View(j) {
         }
     }//onDraw
 
+    @SuppressLint("NewApi")
     override fun onTouchEvent(event: MotionEvent): Boolean {
 
         when(event.action){
@@ -53,6 +65,23 @@ class LienzoJ2(j:Juego2):View(j) {
                 for(t in textos){
                     if(t.detArea(event.x,event.y)){
                         punteroFigura=t
+                        var ai = 0
+                        when(t.nom){
+                            "Leon"->{ ai=0 }
+                            "Lobo"->{ ai=1 }
+                            "Pez"->{ ai=2 }
+                            "Quetzal"->{ ai=3 }
+                            "Rana"->{ ai=4 }
+                            "Toro"->{ ai=5 }
+                        }//when
+                            try {
+                                var mp = MediaPlayer()
+                                mp.setDataSource(resources.openRawResourceFd(audios[ai]))
+                                mp.prepare()
+                                mp.start()
+                            }catch(e:Exception){
+                                Toast.makeText(this.context,e.message,Toast.LENGTH_LONG).show()
+                            }
                         println("nombre"+punteroFigura!!.nom)
                         break
                     }//if
