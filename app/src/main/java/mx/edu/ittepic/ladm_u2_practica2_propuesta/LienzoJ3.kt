@@ -146,7 +146,7 @@ class LienzoJ3(t:Juego3):View(t) {
     }//onTouchEvent
 
     fun obtenerImg(){
-        for(i in (0..10)){
+        for(i in (0..9)){
             imagenes.add(Figura(this,imgns[i],350f,20f,nams[i]))
             numeros.add(Figura(this,imagNum[i],400f,100f,nams[i]))
         }
