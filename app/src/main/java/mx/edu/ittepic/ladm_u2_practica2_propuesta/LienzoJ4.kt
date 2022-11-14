@@ -120,7 +120,7 @@ class LienzoJ4(p: Juego4) : View(p) {
 
         }
     }
-
+//
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
