@@ -1,7 +1,9 @@
 package mx.edu.ittepic.ladm_u2_practica2_propuesta
 
+import android.content.ContentValues.TAG
 import android.graphics.Canvas
 import android.media.MediaPlayer
+import android.os.Message
 import android.provider.MediaStore
 import android.util.Log
 import android.view.MotionEvent
@@ -124,7 +126,7 @@ class LienzoJ4(p: Juego4) : View(p) {
             MotionEvent.ACTION_DOWN -> {
                 if (letraA.determinarArea(event.x, event.y)) {
                     punteroFigura = letraA
-                    try{ vozA.start() }catch(e:Exception){}
+                    try{ vozA.start() }catch(e:Exception){ Log.d(TAG, "voz", e);}
                 }
                 if (letraE.determinarArea(event.x, event.y)) {
                     punteroFigura = letraE
