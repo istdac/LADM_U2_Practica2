@@ -2,12 +2,14 @@ package mx.edu.ittepic.ladm_u2_practica2_propuesta
 
 import android.annotation.SuppressLint
 import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
 import android.media.MediaPlayer
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 
-class LienzoJ3(p:Juego3): View(p) {
+class LienzoJ3(t:Juego3):View(t) {
 
     var imagenes=ArrayList<Figura>()
     var numeros=ArrayList<Figura>()
@@ -65,6 +67,10 @@ class LienzoJ3(p:Juego3): View(p) {
     override fun onDraw(c: Canvas) {
         super.onDraw(c)
 
+        val p= Paint()
+        p.color = Color.BLACK
+        c.drawText("Une un numero con la imagen de bloques", 20f,15f,p)
+
         if(imagenes.isNotEmpty() && numeros.isNotEmpty()){
             for(n in numeros){
                 n.pintar(c)
@@ -97,10 +103,10 @@ class LienzoJ3(p:Juego3): View(p) {
                             "Diez"->{ ai=9 }
                         }//when
                         try {
-                            var mp = MediaPlayer()
-                            mp.setDataSource(resources.openRawResourceFd(audios[ai]))
-                            mp.prepare()
-                            mp.start()
+                            var aud = MediaPlayer()
+                            aud.setDataSource(resources.openRawResourceFd(audios[ai]))
+                            aud.prepare()
+                            aud.start()
                         }catch(e:Exception){
                             Toast.makeText(this.context,e.message, Toast.LENGTH_LONG).show()
                         }
@@ -178,6 +184,5 @@ class LienzoJ3(p:Juego3): View(p) {
         }
         imagenes.get(imagenes.size-1).invisible=false
     }//Visibilidad
-
 
 }//Clase lienzo J3
