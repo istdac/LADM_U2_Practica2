@@ -67,9 +67,10 @@ class LienzoJ3(t:Juego3):View(t) {
     override fun onDraw(c: Canvas) {
         super.onDraw(c)
 
-        val p= Paint()
+        /*val p= Paint()
         p.color = Color.BLACK
-        c.drawText("Une un numero con la imagen de bloques", 20f,15f,p)
+        c.drawText("Une un numero con la imagen de bloques", 300f,100f,p)
+        */
 
         if(imagenes.isNotEmpty() && numeros.isNotEmpty()){
             for(n in numeros){
@@ -147,25 +148,33 @@ class LienzoJ3(t:Juego3):View(t) {
 
     fun obtenerImg(){
         for(i in (0..9)){
-            imagenes.add(Figura(this,imgns[i],350f,20f,nams[i]))
-            numeros.add(Figura(this,imagNum[i],400f,100f,nams[i]))
+            imagenes.add(Figura(this,imgns[i],300f,200f,nams[i]))
+            numeros.add(Figura(this,imagNum[i],500f,200f,nams[i]))
         }
     }//obtenerImg
 
     fun ajustarPuntosNumeros(){
-        var posX= arrayOf(50f,650f)
-        var posY= arrayOf(500f,900f,1300f)
+        var posX= arrayOf(200f,500f,800f)
+        var posY= arrayOf(800f,1100f,1400f,1650f)
         var ix=0
         var iy=0
         var c=0
         for (n in numeros){
-            if(c<2){iy=0}else if (c<4){iy=1}else{iy=2}
+            if(c<3){
+                iy=0
+            }else if (c<6) {
+                iy=1
+            }else if(c<9){
+                iy=2
+            }else {
+                iy=3
+            }
             println(n.x)
             n.x=posX[ix].toFloat()
             n.y=posY[iy].toFloat()
             n.correcto=true
             c++
-            if(ix==1) {
+            if(ix==2) {
                 ix = 0
             }
             else {
@@ -178,7 +187,7 @@ class LienzoJ3(t:Juego3):View(t) {
     fun ajustarVisibilidad(){
         for (i in imagenes){
             i.invisible=true
-            i.x=350f
+            i.x=300f
             println("x "+i.x)
             println("y "+i.y)
         }
