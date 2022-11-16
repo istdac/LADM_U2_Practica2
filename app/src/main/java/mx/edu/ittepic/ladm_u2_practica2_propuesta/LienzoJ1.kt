@@ -2,6 +2,9 @@ package mx.edu.ittepic.ladm_u2_practica2_propuesta
 
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.media.MediaPlayer
 import android.view.MotionEvent
 import android.view.View
 import kotlin.random.Random
@@ -13,8 +16,11 @@ class LienzoJ1(j:Juego1):View(j) {
     var naiArr = ArrayList<Figura>()
     var tot= ArrayList<Int>()
     var totindex=8
+    val fondo= BitmapFactory.decodeResource(resources,R.drawable.fondojuego1)
+    var vozIns = MediaPlayer.create(context, R.raw.insj1)
     init{
         //Obtener imagenes
+        try{ vozIns.start() }catch(e:Exception){}
         obtenerNaipes()
         barajear()
 
@@ -22,6 +28,8 @@ class LienzoJ1(j:Juego1):View(j) {
 
     override fun onDraw(c: Canvas) {
         super.onDraw(c)
+        var p= Paint()
+        c.drawBitmap(fondo,0f,0f,p)
 
         if(naiArr.isNotEmpty()) {
             for (n in naiArr) {
@@ -103,14 +111,14 @@ class LienzoJ1(j:Juego1):View(j) {
             println(""+posX[ix]+""+posY[iy])
         }
 
-        naiArr.add(Figura(this,naipes[totindex],400f,100f,"Principal"))
+        naiArr.add(Figura(this,naipes[totindex],450f,100f,"Principal"))
         naiArr[totindex].nom="Par"
         naiArr[naiArr.size-1].correcto=true
     }//barajear
 
     fun sigNaipe(){
         if (naiArr.isNotEmpty()){
-            naiArr.add(Figura(this,naipes[totindex],400f,100f,"Principal"))
+            naiArr.add(Figura(this,naipes[totindex],450f,100f,"Principal"))
             naiArr[totindex].nom="Par"
             naiArr[naiArr.size-1].correcto=true
         }

@@ -64,7 +64,7 @@ class LienzoJ4(p: Juego4) : View(p) {
     val inputLeon = Figuras_estaticasJ4(this, R.drawable.j4input, posLetras + 400, 1450f)
     val letraN = Figuras_estaticasJ4(this, R.drawable.j4n, posLetras + 700, 1500f)
     //felicidaddes
-    val felicidades=Figuras_estaticasJ4(this,R.drawable.buentrabajo,100f,400f)
+    val felicidades=Figuras_estaticasJ4(this,R.drawable.buentrabajo,20f,400f)
 
 //
 

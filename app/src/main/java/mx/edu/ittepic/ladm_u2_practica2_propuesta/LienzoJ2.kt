@@ -3,6 +3,7 @@ package mx.edu.ittepic.ladm_u2_practica2_propuesta
 import android.annotation.SuppressLint
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.graphics.Paint
 import android.media.MediaPlayer
 import android.view.MotionEvent
 import android.view.View
@@ -38,6 +39,8 @@ class LienzoJ2(j:Juego2):View(j) {
     )
     var nams = arrayOf("Leon","Lobo","Pez","Quetzal","Rana","Toro")
     var punteroFigura : Figura?=null
+    val fondo= BitmapFactory.decodeResource(resources,R.drawable.fondoj2)
+
     init{
         obtenerImg()
         ajustarPuntosTextos()
@@ -46,6 +49,8 @@ class LienzoJ2(j:Juego2):View(j) {
 
     override fun onDraw(c: Canvas) {
         super.onDraw(c)
+        var p=Paint()
+        c.drawBitmap(fondo,1f,1f,p)
 
         if(imagenes.isNotEmpty() && textos.isNotEmpty()){
             for(n in textos){
@@ -85,6 +90,9 @@ class LienzoJ2(j:Juego2):View(j) {
                         println("nombre"+punteroFigura!!.nom)
                         break
                     }//if
+                    else{
+                        ajustarPuntosTextos()
+                    }
                 }//for
             }//actiondown
             MotionEvent.ACTION_MOVE->{

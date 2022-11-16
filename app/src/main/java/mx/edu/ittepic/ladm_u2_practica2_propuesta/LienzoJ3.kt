@@ -1,6 +1,7 @@
 package mx.edu.ittepic.ladm_u2_practica2_propuesta
 
 import android.annotation.SuppressLint
+import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
@@ -8,12 +9,13 @@ import android.media.MediaPlayer
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
+import androidx.core.view.drawToBitmap
 
 class LienzoJ3(t:Juego3):View(t) {
 
     var imagenes=ArrayList<Figura>()
     var numeros=ArrayList<Figura>()
-
+    val fondo= BitmapFactory.decodeResource(resources,R.drawable.herramientas)
     var imagNum= arrayOf(
         R.drawable.uno,
         R.drawable.dos,
@@ -66,11 +68,7 @@ class LienzoJ3(t:Juego3):View(t) {
 
     override fun onDraw(c: Canvas) {
         super.onDraw(c)
-
-        /*val p= Paint()
-        p.color = Color.BLACK
-        c.drawText("Une un numero con la imagen de bloques", 300f,100f,p)
-        */
+        var p= Paint()
 
         if(imagenes.isNotEmpty() && numeros.isNotEmpty()){
             for(n in numeros){
@@ -80,6 +78,7 @@ class LienzoJ3(t:Juego3):View(t) {
                 i.pintar(c)
             }
         }
+        c.drawBitmap(fondo,730f,1640f,p)
     }//onDraw
 
     @SuppressLint("NewApi")
@@ -114,6 +113,9 @@ class LienzoJ3(t:Juego3):View(t) {
                         println("nombre"+punteroFigura!!.nom)
                         break
                     }//if
+                    else{
+                        ajustarPuntosNumeros()
+                    }
                 }//for
             }//actiondown
             MotionEvent.ACTION_MOVE->{
@@ -134,12 +136,13 @@ class LienzoJ3(t:Juego3):View(t) {
                                     ajustarVisibilidad()
                                 }
                                 invalidate()
-
-
                             }
                         }
                     }
                 }//if
+                else{
+                    ajustarPuntosNumeros()
+                }
             }
         }//when
         invalidate()
@@ -148,14 +151,14 @@ class LienzoJ3(t:Juego3):View(t) {
 
     fun obtenerImg(){
         for(i in (0..9)){
-            imagenes.add(Figura(this,imgns[i],300f,200f,nams[i]))
-            numeros.add(Figura(this,imagNum[i],500f,200f,nams[i]))
+            imagenes.add(Figura(this,imgns[i],250f,0f,nams[i]))
+            numeros.add(Figura(this,imagNum[i],500f,150f,nams[i]))
         }
     }//obtenerImg
 
     fun ajustarPuntosNumeros(){
         var posX= arrayOf(200f,500f,800f)
-        var posY= arrayOf(800f,1100f,1400f,1650f)
+        var posY= arrayOf(700f,1000f,1300f,1550f)
         var ix=0
         var iy=0
         var c=0
